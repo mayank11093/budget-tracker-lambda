@@ -19,5 +19,5 @@ def createResponse(itemList, status):
     if status == 200:
         res = itemList
     else:
-        res['message'] = 'Invalid credentials. Please try with correct one.'
+        res['message'] = 'Invalid username. Please try with correct one.'
     return  res
