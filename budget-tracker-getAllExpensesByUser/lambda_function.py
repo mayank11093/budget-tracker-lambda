@@ -4,7 +4,8 @@ from boto3.dynamodb.conditions import Key
 
 def lambda_handler(event, context):
     # TODO implement
-    username = event.get('params').get('querystring').get('username')
+    print(event)
+    username = event.get('params').get('path').get('user')
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('expenses')
     queryResponse = table.query(
@@ -19,5 +20,6 @@ def createResponse(itemList, status):
     if status == 200:
         res = itemList
     else:
-        res['message'] = 'Invalid username. Please try with correct one.'
+        res['message'] = 'Invalid credentials. Please try with correct one.'
     return  res
+    
